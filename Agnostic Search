@@ -1,0 +1,67 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+int DecreasingBinarySearch(vector<int> v, int key, int size){
+    int start = 0;
+    int e = size - 1;
+    while(start <= e){
+        int mid =  start + (e - start)/2;
+        if(v[mid] == key){
+            return mid;
+        }
+        else if(v[mid] > key){
+            start = mid + 1;
+        }
+        else{
+            e =  mid - 1;
+        }
+
+    }
+    return -1;
+}
+
+int BinarySearch(vector<int> v, int key, int size){
+    int start = 0;
+    int e = size - 1;
+    while(start <= e){
+        int mid =  start + (e - start)/2;
+        if(v[mid] == key){
+            return mid;
+        }
+        else if(v[mid] > key){
+            e =  mid - 1;
+        }
+        else{
+            start = mid + 1;
+        }
+
+    }
+    return -1;
+}
+
+int main(){
+    vector<int> v = {1};
+    //vector<int> v = {1,2, 3, 4, 5, 6, 7, 8, 9 , 10};
+    //vector<int> v = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    int key = 1;
+
+    /*if(v.size() == 1 && v[0] == key){
+            cout<<"The element is present"<<endl;
+    }*/
+
+
+    if(v[0] > v[1]){
+        int result =  DecreasingBinarySearch(v, key, v.size());
+        cout<<" The index is found in "<<result<<endl;
+    }
+    else{
+        int result = BinarySearch(v, key, v.size());
+        cout<<" The index is found in "<<result<<endl;
+    }
+
+
+
+    return 0;
+}
