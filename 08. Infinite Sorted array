@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int BinarySearch(vector<int> v, int start, int e , int key, int size){
+
+    while(start <= e){
+        int mid =  start + (e - start)/2;
+        if(v[mid] == key){
+            return mid;
+        }
+        else if(v[mid] > key){
+            e =  mid - 1;
+        }
+        else{
+            start = mid + 1;
+        }
+
+    }
+    return -1;
+}
+
+
+int Qfinite(vector<int> v, int key, int low, int high, int size){
+
+    while(key > v[high]){
+        low = high;
+        high  =  high * 2;
+    }
+
+    int res = BinarySearch(v, low, high, key , size);
+    return res;
+
+}
+
+int main(){
+    vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    int key = 8;
+    int low = 0;
+    int high = 1;
+
+    int result = Qfinite(v, 8, low, high, v.size());
+    cout<<"The number found at the index "<<result;
+    return 0;
+}
