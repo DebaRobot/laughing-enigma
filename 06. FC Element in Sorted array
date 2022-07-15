@@ -31,3 +31,40 @@ int main(){
     cout<<"Floor of an element : "<<result<<endl;
 
 }
+
+-----------------------------------------------------------------
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+int Ceil(vector<int> v, int size, int key){
+    int st = 0;
+    int e = size - 1;
+    int res = -1;
+    while(st<= e){
+        int mid = st + (e - st)/2;
+        if(v[mid] == key){
+            return v[mid];
+        }
+        else if(v[mid] > key){
+            res = mid;
+            e = mid - 1;
+        }
+        else if(v[mid] < key){
+            st = mid + 1;
+        }
+
+    }
+    return v[st];
+}
+
+int main(){
+
+    vector<int> v =  {1, 2, 3, 4, 8, 10, 12, 19};
+    int result = Ceil(v, v.size(), 5);
+    cout<<"Floor of an element : "<<result<<endl;
+
+}
+
